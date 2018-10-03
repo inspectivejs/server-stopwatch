@@ -1,6 +1,9 @@
 // Basic init
-const electron = require('electron')
-const {app, BrowserWindow} = electron
+const electron = require('electron');
+const { ipcMain } = require('electron');
+const http = require('http');
+const net = require('net');
+const { app, BrowserWindow } = electron
 
 // Let electron reloads by itself when webpack watches changes in ./app/
 require('electron-reload')(__dirname)
@@ -15,3 +18,9 @@ app.on('ready', () => {
     mainWindow.loadURL(`file://${__dirname}/app/index.html`)
 
 })
+
+ipcMain.on('port', (event, port) => {
+  http.createServer(port, (req, res) => {
+    res.on('')
+  })
+});
