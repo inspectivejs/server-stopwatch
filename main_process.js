@@ -19,8 +19,16 @@ app.on('ready', () => {
 
 })
 
+// create socket server with user defined port [TODO: path? options?]
 ipcMain.on('port', (event, port) => {
-  http.createServer(port, (req, res) => {
-    res.on('')
+  const socketServer = net.createServer(socket => {
+    socket.on('data', function(data) {
+      var json = JSON.parse(data.toString());
+
+      // handle response from dev server 
+      console.log(json)
+    });
+  }).listen(port, () => {
+    console.log(`listening on localhost://${port}`)
   })
 });
