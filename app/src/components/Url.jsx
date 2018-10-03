@@ -17,11 +17,11 @@ class Url extends React.Component{
     console.log(this.state.port);
     ipcRenderer.send('port', this.state.port)
   }
-  handleOnMessage(){
-    ipcRenderer.on('reply', (event, arg) => {
-      console.log(arg);
-    });
-  }
+  // handleOnMessage(){
+  //   ipcRenderer.on('reply', (event, arg) => {
+  //     console.log(arg);
+  //   });
+  // }
 
   render(){
     return (

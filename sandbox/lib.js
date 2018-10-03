@@ -39,7 +39,7 @@ function connect(server) {
   server.on('request', (request, response) => {
 
     //Emit 'REQUEST' event on every request made to dev server
-    socket.emit('REQUEST', JSON.stringify({path: request.path, method: request.method,}));
+    socket.emit('REQUEST', JSON.stringify({path: request.path, method: request.method}));
     //Set first performance mark
     performance.mark('A');
 
@@ -48,7 +48,7 @@ function connect(server) {
     request.on('data', (chunk) => {
       body.push(chunk);
     }).on('end', () => {
-      
+      // request POST method
       if( request.method === 'POST'){
         body = Buffer.concat(body).toString();
 
@@ -61,7 +61,6 @@ function connect(server) {
           body: JSON.parse(body)
         }));
       }     
-
     })
 
     //When the response is sent from their server.......

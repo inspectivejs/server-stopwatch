@@ -5,11 +5,16 @@
 // THIS WILL BE RUN BY ELECTRON'S MAIN PROCESS                      //
 //////////////////////////////////////////////////////////////////////
 
+console.log('the top of the file');
 const app = require('express')();
 
 //Pass express app into NODE createServer
 const server = require('http').createServer(app);
 let io = require('socket.io')(server);
+
+app.post('/', (req, res) => {
+  res.send('we got it');
+});
 
 //Attach socket connection to server
 io.sockets.on('connection', (socket) => {

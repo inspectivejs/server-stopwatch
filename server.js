@@ -1,23 +1,22 @@
+/*
+ * DEV SERVER
+ */
+
 const http = require('http');
 const net = require('net');
 
-const appServer = http.createServer((req,res) => {});
-appServer.listen(8080, () => {
-  console.log('application listening on port 8080')
-})
+const stopwatch = require('./lib/connect.js');
 
+// Client's server
 const server = http.createServer((req, res) => {
-  res.on('finish', data => {
-    appServer.emit('data', 'GET from server.js');
-  });
-  switch(req.url) {
+  switch (req.url) {
     case '/':
-      switch (req.method){
+      switch (req.method) {
         case 'GET':
-          res.end('GET');
+          res.end('Dummy GET');
           break;
         case 'POST':
-          res.end('POST');
+          res.end('Dummy POST');
           break;
         default:
           return;
@@ -26,8 +25,10 @@ const server = http.createServer((req, res) => {
     default:
       return;
   }
-})
+});
+
+stopwatch.connect(8080, server);
 
 server.listen(3000, () => {
-  console.log('server started!')
+  console.log('server started!');
 });
