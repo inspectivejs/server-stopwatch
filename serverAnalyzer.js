@@ -2,43 +2,45 @@ const http = require('http');
 const net = require('net');
 const { PerformanceObserver, performance } = require('perf_hooks');
 
-// Create new socket connection
-const client = new net.Socket();
-client.on('error', () => {
-  console.log('socket connection error')
-})
-
-const observer = new PerformanceObserver(entries => {
-  entries.getEntries().forEach(entry => {
-    const { duration, name, startTime, entryType } = entry;
-    client.connect(8080, () => {
-      client.write(JSON.stringify({
-        duration,
-        name,
-        startTime,
-        entryType
-      }));
-    });
+  // Create new socket connection
+  const client = new net.Socket();
+  client.on('error', () => {
+    console.log('socket connection error')
   })
-});
 
-observer.observe({
-  entryTypes: ['measure']
-})
+  const observer = new PerformanceObserver(entries => {
+    entries.getEntries().forEach(entry => {
+      const { duration, name, startTime, entryType } = entry;
+      client.connect(8080, () => {
+        client.write(JSON.stringify({
+          duration,
+          name,
+          startTime,
+          entryType
+        }));
+      });
+    })
+  });
 
-req.on('readable', data => {
-  performance.mark('/endpoint/start');
-});
+  observer.observe({
+    entryTypes: ['measure']
+  })
 
-res.on('finish', data => {
-  performance.mark('/endpoint/end');
-  performance.measure('endpoint route', '/endpoint/start', '/endpoint/end');
-});
+function stopwatch(req, res) {
+ 
+  req.on('readable', data => {
+    console.log('Route start event')
+    performance.mark('/endpoint/start');
+  });
 
-function stopwatch(server) {
-  
+  res.on('finish', data => {
+    console.log('Route end event');
+    performance.mark('/endpoint/end');
+    performance.measure('endpoint route', '/endpoint/start', '/endpoint/end');
+  });
+
 }
 
 module.exports = {
-  stopwatch: stopwatch
+  stopwatch
 }
