@@ -35,14 +35,18 @@ observer.observe({
 })
 
 const server = http.createServer((req, res) => {
-
+  let start, final;
   req.on('readable', data => {
+    console.log('readable ', start = Date.now());
     performance.mark('/endpoint/start');
   });
   
   res.on('finish', data => {
+    final = Date.now();
+    console.log('finished ', final - start);
     performance.mark('/endpoint/end');
     performance.measure('endpoint route', '/endpoint/start', '/endpoint/end');
+    performance.clearMarks();
   });
   
   //timeouts for testing route performance
@@ -50,12 +54,13 @@ const server = http.createServer((req, res) => {
     case '/':
       switch (req.method) {
         case 'GET':
+        res.end('GET');
           // setTimeout(function(){
           //   res.end('GET');
           // }, 2000);
           break;
         case 'POST':
-        res.end('POST');
+          res.end('POST');
           // setTimeout(function(){
           //   res.end('POST');
           // }, 2000);

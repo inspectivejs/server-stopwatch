@@ -19,19 +19,3 @@ app.on('ready', () => {
 
   mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
-
-
-// create socket server with user defined port [TODO: path? options?]
-// ipcMain.on('port', (event, port) => {
-//   const socketServer = net.createServer((socket) => {
-//     socket.on('data', function(data) {
-//       var json = JSON.parse(data.toString());
-
-//       // handle response from dev server 
-//       console.log('main process: ', json);
-//       mainWindow.webContents.send('sendJSON', json);
-//     });
-//   }).listen(port, () => {
-//     console.log(`listening on localhost://${port}`);
-//   });
-// });
