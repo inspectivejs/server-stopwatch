@@ -25,6 +25,7 @@ const observer = new PerformanceObserver(entries => {
         startTime,
         entryType
       }));
+      client.destroy();
     });
   })
 });
@@ -47,13 +48,14 @@ const server = http.createServer((req, res) => {
   //timeouts for testing route performance
   switch(req.url) {
     case '/':
-      switch (req.method){
+      switch (req.method) {
         case 'GET':
           // setTimeout(function(){
           //   res.end('GET');
           // }, 2000);
           break;
         case 'POST':
+        res.end('POST');
           // setTimeout(function(){
           //   res.end('POST');
           // }, 2000);
