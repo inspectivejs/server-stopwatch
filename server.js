@@ -5,9 +5,20 @@
 // 4. Postman -> GET/POST
 const http = require('http');
 const stopwatch = require('./serverAnalyzer').stopwatch;
+const { performance } = require('perf_hooks');
 
 const server = http.createServer((req, res) => {
   stopwatch(req, res);
+
+  // req.on('readable', () => {
+  //   console.log('Route start event in Server', performance.now())
+  // });
+
+  // res.on('finish', data => {
+  //   console.log('Route end event in Server', performance.now());
+  // });
+
+
   //timeouts for testing route performance
   switch(req.url) {
     case '/':

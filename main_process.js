@@ -23,10 +23,12 @@ app.on('ready', () => {
 ipcMain.on('port', (event, port) => {
   const socketServer = net.createServer(socket => {
     socket.on('data', function(data) {
-      var json = JSON.parse(data.toString());
+      const perfObj = JSON.parse(data);
+
+      console.log('Performance Data:\n', perfObj);
 
       // handle response from dev server 
-      console.log(json)
+      
     });
   }).listen(port, () => {
     console.log(`listening on localhost://${port}`)
