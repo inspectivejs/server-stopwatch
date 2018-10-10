@@ -26,6 +26,8 @@
     "webpack-cli": "^2.1.5"
   },
   "dependencies": {
+    "cpuprofile": "^0.1.1",
+    "moment": "^2.22.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }
