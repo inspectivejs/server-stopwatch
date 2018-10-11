@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return App; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_Url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Url */ \"./app/src/components/Url.jsx\");\n/* harmony import */ var _components_Logo___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Logo/ */ \"./app/src/components/Logo/index.jsx\");\n/* harmony import */ var _components_Link___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Link/ */ \"./app/src/components/Link/index.jsx\");\n\n\n\n\n\n\nclass App extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n\n  render() {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Url__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null);\n  }\n}\n\n//# sourceURL=webpack:///./app/src/App.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return App; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_Url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Url */ \"./app/src/components/Url.jsx\");\n/* harmony import */ var _components_Logo___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Logo/ */ \"./app/src/components/Logo/index.jsx\");\n/* harmony import */ var _components_Link___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Link/ */ \"./app/src/components/Link/index.jsx\");\n/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! os */ \"os\");\n/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_5__);\n/* harmony import */ var _components_containers_dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/containers/dashboard */ \"./app/src/components/containers/dashboard.jsx\");\n\n\n\n\n\n\n\n\n\nclass App extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n  // constructor() {\n  //   super();\n  //   this.state = {\n  //     isToggled: false,\n  //   };\n  // }\n\n  render() {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'div',\n      null,\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Url__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null)\n    );\n  }\n}\n\n//# sourceURL=webpack:///./app/src/App.jsx?");
 
 /***/ }),
 
@@ -152,7 +152,31 @@ eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"logo\":\"_1
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nconst { ipcRenderer } = __webpack_require__(/*! electron */ \"electron\");\n\nclass Url extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {\n  constructor() {\n    super();\n    this.state = {\n      port: ''\n    };\n    this.handleOnChange = this.handleOnChange.bind(this);\n    this.handleOnClick = this.handleOnClick.bind(this);\n  }\n  handleOnChange(e) {\n    this.setState({ port: e.target.value });\n  }\n  handleOnClick() {\n    console.log(this.state.port);\n    ipcRenderer.send('port', this.state.port);\n  }\n  handleOnMessage() {\n    ipcRenderer.on('reply', (event, arg) => {\n      console.log(arg);\n    });\n  }\n\n  render() {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'div',\n      null,\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { type: 'text', onChange: e => this.handleOnChange(e), value: this.state.port }),\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { type: 'submit', value: 'PORT', onClick: this.handleOnClick })\n    );\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Url);\n\n//# sourceURL=webpack:///./app/src/components/Url.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _containers_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./containers/dashboard */ \"./app/src/components/containers/dashboard.jsx\");\n/* harmony import */ var _presentation_performance__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./presentation/performance */ \"./app/src/components/presentation/performance.jsx\");\n\n\n\n\n\n// const path = require('path');\nconst { remote } = __webpack_require__(/*! electron */ \"electron\");\n\nconst net = remote.require('net');\n\nconst { ipcRenderer } = __webpack_require__(/*! electron */ \"electron\");\n\nclass Url extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {\n  constructor() {\n    super();\n    this.state = {\n      port: '',\n      isToggled: false,\n      data: {}\n    };\n\n    this.handleOnChange = this.handleOnChange.bind(this);\n    this.handleOnClick = this.handleOnClick.bind(this);\n  }\n\n  handleOnChange(e) {\n    this.setState({ port: e.target.value });\n  }\n\n  handleOnClick() {\n    // console.log(this.state.port);\n    const socketServer = net.createServer(socket => {\n      socket.on('data', data => {\n        let json = JSON.parse(data.toString());\n\n        this.setState({ data: json });\n      });\n    }).listen(this.state.port, () => {\n      console.log('Listening to PORT: ', this.state.port);\n    });\n  }\n\n  render() {\n    console.log(this.state.data);\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'div',\n      null,\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { type: 'text', onChange: e => this.handleOnChange(e), value: this.state.port }),\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('input', { type: 'submit', value: 'PORT', onClick: this.handleOnClick }),\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_presentation_performance__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { data: this.state.data })\n    );\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Url);\n\n//# sourceURL=webpack:///./app/src/components/Url.jsx?");
+
+/***/ }),
+
+/***/ "./app/src/components/containers/dashboard.jsx":
+/*!*****************************************************!*\
+  !*** ./app/src/components/containers/dashboard.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst { ipcRenderer } = __webpack_require__(/*! electron */ \"electron\");\n\nclass Dashboard extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n  constructor() {\n    super();\n\n    this.state = {};\n  }\n\n  handleOnSendJson() {\n    ipcRenderer.on('sendJSON', (event, payload) => {\n      console.log('i got data');\n      this.setState(payload);\n    });\n  }\n\n  render() {\n    console.log(this.state);\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'div',\n      { className: 'container main frame' },\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n        'div',\n        { className: 'title' },\n        'Analysis'\n      ),\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n        'div',\n        { className: 'container frame' },\n        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n          'h2',\n          null,\n          'these stats'\n        )\n      )\n    );\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Dashboard);\n\n//# sourceURL=webpack:///./app/src/components/containers/dashboard.jsx?");
+
+/***/ }),
+
+/***/ "./app/src/components/presentation/performance.jsx":
+/*!*********************************************************!*\
+  !*** ./app/src/components/presentation/performance.jsx ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst Performance = props => {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n    'div',\n    null,\n    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'h2',\n      null,\n      props.data.name\n    ),\n    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'h3',\n      null,\n      'Duration: ',\n      props.data.duration\n    ),\n    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'h3',\n      null,\n      'Start Time: ',\n      props.data.startTime\n    ),\n    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      'h3',\n      null,\n      'Observer Type: ',\n      props.data.entryType\n    )\n  );\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Performance);\n\n//# sourceURL=webpack:///./app/src/components/presentation/performance.jsx?");
 
 /***/ }),
 
@@ -319,6 +343,17 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"electron\");\n\n//# sourceURL=webpack:///external_%22electron%22?");
+
+/***/ }),
+
+/***/ "os":
+/*!*********************!*\
+  !*** external "os" ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"os\");\n\n//# sourceURL=webpack:///external_%22os%22?");
 
 /***/ })
 
