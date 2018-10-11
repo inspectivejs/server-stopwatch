@@ -1,9 +1,5 @@
 // Basic init
 const electron = require('electron');
-const { ipcMain } = require('electron');
-const http = require('http');
-const net = require('net');
-const { EventEmitter } = require('events').EventEmitter;
 const { app, BrowserWindow } = electron;
 
 // Let electron reloads by itself when webpack watches changes in ./app/

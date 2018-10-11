@@ -31,7 +31,7 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules
+node_modules/
 jspm_packages
 
 # Optional npm cache directory
@@ -40,3 +40,5 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# Remove server.js (OLD)
+.server.js
