@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['*','.js', '.jsx']
   },
   entry: [
     './app/index.jsx'
@@ -11,11 +11,22 @@ module.exports = {
     filename: 'app.js'
   },
   module: {
-    loaders: [
-     { test: /\.jsx?$/, loaders: ['babel-loader'] }
+    rules: [
+      { test: /\.jsx?$/, 
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              "babel-plugin-transform-class-properties",
+              "transform-react-jsx"
+            ],
+            presets: ["@babel/preset-env"]
+          }
+        } 
+      }
     ]
   },
   plugins: [
-    new webpack.NoErrorsPlugin()
+    new webpack.ExternalsPlugin('commonjs', ['electron'])
   ]
 };

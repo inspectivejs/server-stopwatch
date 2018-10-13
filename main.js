@@ -1,11 +1,12 @@
 'use strict';
 const electron = require('electron');
+const { ipcMain } = require('electron');
+const { spawn } = require('child_process');
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
-const request = require('request');
 
 // Report crashes to our server.
-electron.crashReporter.start();
+// electron.crashReporter.start();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -30,7 +31,7 @@ app.on('ready', () => {
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -39,4 +40,24 @@ app.on('ready', () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  
 });
+
+let child;
+
+ipcMain.on('server', (event, filePath) => {
+  child = spawn('node', [ filePath ], {
+    stdio: ['ipc']
+  });
+  
+  child.on('message', data => {
+    data = JSON.parse(data.toString())
+    event.sender.send('child-data', data);
+  });
+
+});
+
+ipcMain.on('terminate', (event, arg) => {
+  child.kill();
+})
