@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 module.exports = {
+  watch: true,
+  target: 'electron-renderer',
   resolve: {
     extensions: ['*','.js', '.jsx']
   },
