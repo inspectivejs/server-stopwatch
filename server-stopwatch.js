@@ -6,6 +6,7 @@ function StopWatch () {
     const entries = items.getEntries().map(entry => {
       return {
         route: entry.name,
+        timeOrigin: performance.timeOrigin,
         startTime: entry.startTime,
         duration: entry.duration
       }

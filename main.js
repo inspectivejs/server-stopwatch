@@ -44,10 +44,8 @@ app.on('ready', () => {
   
 });
 
-let child;
-
 ipcMain.on('server', (event, filePath) => {
-  child = spawn('node', [ filePath ], {
+  const child = spawn('node', [ filePath ], {
     stdio: ['ipc']
   });
   
@@ -55,7 +53,6 @@ ipcMain.on('server', (event, filePath) => {
     data = JSON.parse(data.toString())
     event.sender.send('child-data', data);
   });
-
 });
 
 ipcMain.on('terminate', (event, arg) => {

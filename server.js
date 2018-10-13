@@ -7,16 +7,17 @@ const stopwatch = new sw();
 const server = http.createServer(app);
 
 stopwatch.listen(server, {
-  url: '/registered',
+  url: '/yes',
   method: 'GET'
 });
 
-app.get('/', (req, res) => {
+app.get('/yes', (req, res, next) => {
+  next();
+}, (req, res) => {
   res.send('you should see this')
 })
 
-app.post('/', (req, res) => {
-  const data = { req}
+app.get('/no', (req, res) => {
   res.send('you should not see this');
 })
 

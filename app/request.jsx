@@ -32,6 +32,7 @@ class Request extends React.Component {
   }
 
   handleInput = (filePath) => {
+    console.log(filePath)
     ipcRenderer.send('server', filePath);
   }
 
