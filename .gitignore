@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
 
 package-lock.json
 .DS_Store
+=======
+#
+*-lock.json
+app/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+>>>>>>> 0234e6c7aeef75b3bc8dae39008d8e259b885185
 
 # Runtime data
 pids
@@ -16,6 +27,12 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+<<<<<<< HEAD
+=======
+# nyc test coverage
+.nyc_output
+
+>>>>>>> 0234e6c7aeef75b3bc8dae39008d8e259b885185
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
@@ -25,6 +42,21 @@ coverage
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
+<<<<<<< HEAD
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+=======
+# Dependency directories
+node_modules/
+jspm_packages
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Remove server.js (OLD)
+.server.js
+>>>>>>> 0234e6c7aeef75b3bc8dae39008d8e259b885185

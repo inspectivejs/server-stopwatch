@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "http-wizard",
   "version": "1.0.0",
   "description": "A less minimal Electron application",
@@ -56,5 +57,36 @@
     "react": "^16.5.2",
     "react-highlight": "^0.12.0",
     "request": "^2.67.0"
+=======
+  "name": "electron-react-webpack",
+  "version": "1.0.0",
+  "description": "Electron + React 16 + Webpack 4 template.",
+  "main": "main_process.js",
+  "scripts": {
+    "bundle": "webpack --mode development",
+    "serve": "electron .",
+    "start": "npm-run-all --parallel bundle serve"
+  },
+  "author": "J. Renato Ramos González <renato.etc.etc.etc@gmail.com>",
+  "repository": "pastahito/electron-react-webpack",
+  "license": "WTFPL",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.10",
+    "electron": "^1.8.2",
+    "electron-reload": "^1.2.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.10",
+    "nodemon": "^1.18.4",
+    "npm-run-all": "^4.1.2",
+    "webpack": "4.19",
+    "webpack-cli": "^2.1.5"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+>>>>>>> 0234e6c7aeef75b3bc8dae39008d8e259b885185
   }
 }
