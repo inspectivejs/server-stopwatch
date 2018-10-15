@@ -6,6 +6,8 @@ class AddHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: null, value: null };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAdd = this.handleAdd.bind(this)
   }
 
   handleChange(e) {
@@ -27,13 +29,11 @@ class AddHeader extends React.Component {
   }
 
   render() {
-    const handleChange = this.handleChange.bind(this);
-    const handleAdd = this.handleAdd.bind(this);
-
     return (
       <tr className="add">
-        <td className="name"><input name="name" type="text" value={this.state.name} placeholder="Name" onChange={handleChange} /> </td>
-        <td className="value"><input name="value" type="text" value={this.state.value} placeholder="Value" onChange={handleChange} /> <a href="#" className="round-btn" onClick={handleAdd}>+</a></td>
+        <td className="name"><input name="name" type="text" value={this.state.name} placeholder="Name" onChange={this.handleChange} /> </td>
+        <td className="value"><input name="value" type="text" value={this.state.value} placeholder="Value" onChange={this.handleChange} /> </td>
+        <td className="value"><a href="#" className="round-btn" onClick={this.handleAdd}>+</a></td>
       </tr>
     );
   }
@@ -46,7 +46,17 @@ class RequestHeaders extends React.Component {
       return (
         <tr key={i}>
           <td className="name"><label>{key}</label></td>
-          <td className="value"><input name="method" type="text" value={headers[key]} data-header-name={key} onChange={this.props.handleChangeHeader} placeholder="Header value" /> <a href="#" className="round-btn" data-header-name={key} onClick={this.props.handleRemove}>&times;</a> </td>
+          <td className="value">
+            <input 
+              name="method" 
+              type="text" value={headers[key]} 
+              data-header-name={key} 
+              onChange={this.props.handleChangeHeader} 
+              placeholder="Header value" /> 
+            <a href="#" 
+              className="round-btn" data-header-name={key} 
+              onClick={this.props.handleRemove}>&times;</a>
+          </td>
         </tr>
       );
     });

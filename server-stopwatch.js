@@ -5,7 +5,7 @@ function StopWatch () {
   const observer = new PerformanceObserver(items => {
     const entries = items.getEntries().map(entry => {
       return {
-        route: entry.name,
+        mark: entry.name,
         timeOrigin: performance.timeOrigin,
         startTime: entry.startTime,
         duration: entry.duration
@@ -15,24 +15,22 @@ function StopWatch () {
     performance.clearMarks();
   });
 
-  observer.observe({ entryTypes: ['measure'], buffered: true })
+  observer.observe({ entryTypes: ['measure', 'function'], buffered: true })
   
   this.listen = (server, config) => {
     this.server = server;
-    const options = config || {};
+    const opts = config || {};
     
     this.server.on('request', (req, res) => {
-      
-      options.markIds = {
+      opts.markIds = {
         MARK_START: req.method.concat(req.url).concat('START'),
         MARK_END: req.method.concat(req.url).concat('END'),
         MARK_MEASURE: req.url
       }
-
-      performance.mark(options.markIds.MARK_START);
+      performance.mark(opts.markIds.MARK_START);
 
       res.on('finish', () => {
-        const { MARK_START, MARK_END, MARK_MEASURE } = options.markIds;
+        const { MARK_START, MARK_END, MARK_MEASURE } = opts.markIds;
         performance.mark(MARK_END);
         performance.measure(MARK_MEASURE, MARK_START, MARK_END);
       });  

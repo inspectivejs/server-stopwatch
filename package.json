@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "babel-loader": "^7.1.5",
+    "body-parser": "^1.18.3",
     "child_process": "^1.0.2",
     "electron-navigation": "^1.5.8",
     "escape-html": "^1.0.3",

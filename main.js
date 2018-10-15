@@ -2,7 +2,7 @@
 const electron = require('electron');
 const { ipcMain } = require('electron');
 const { spawn } = require('child_process');
-const {app, BrowserWindow} = electron; 
+const { app, BrowserWindow } = electron; 
 
 require('electron-reload')(__dirname);
 
@@ -53,10 +53,13 @@ ipcMain.on('server', (event, filePath) => {
   
   child.on('message', data => {
     data = JSON.parse(data.toString())
+    console.log(data)
     event.sender.send('child-data', data);
+  });
+
+  ipcMain.on('terminate', (event, arg) => {
+    child.kill();
+    console.log('server terminated')
   });
 });
 
-ipcMain.on('terminate', (event, arg) => {
-  child.kill();
-})
