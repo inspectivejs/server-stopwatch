@@ -2,7 +2,7 @@
 const electron = require('electron');
 const { ipcMain } = require('electron');
 const { spawn } = require('child_process');
-const { app, BrowserWindow } = electron; 
+const { app, BrowserWindow } = electron;
 
 require('electron-reload')(__dirname);
 
@@ -42,24 +42,21 @@ app.on('ready', () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
-
-  
 });
 
 ipcMain.on('server', (event, filePath) => {
-  const child = spawn('node', [ filePath ], {
-    stdio: ['ipc']
+  const child = spawn('node', [filePath], {
+    stdio: ['ipc'],
   });
   
   child.on('message', data => {
-    data = JSON.parse(data.toString())
-    console.log(data)
+    data = JSON.parse(data.toString());
+    console.log(data);
     event.sender.send('child-data', data);
   });
 
   ipcMain.on('terminate', (event, arg) => {
     child.kill();
-    console.log('server terminated')
+    console.log('server terminated');
   });
 });
-
