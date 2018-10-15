@@ -1,51 +1,49 @@
 'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import Events from './events';
-import RequestHeaders from './request_headers';
 import FileInput from './fileinput';
+import { connect } from 'react-redux';
 import { ipcRenderer } from 'electron';
+import RequestHeaders from './request_headers';
+import * as actions from '../actions/actionCreators';
 
 const request = remote.require('request');
 
-class Request extends React.Component {
+const mapStateToProps = store => ({
+  ...store.server
+});
+
+const mapDispatchToProps = dispatch => ({
+  setServerPath: (event) => {
+    event.persist();
+    dispatch(actions.setServerPath(event.target.files[0].path))
+  },
+  setMethod: (event) => dispatch(actions.setMethod(event.target.value)),
+  setURL: (event) => dispatch(actions.setURL(event.target.value)),
+});
+
+class Request extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filePath: '',
-      url: 'http://localhost:3000',
-      method: 'GET',
-      headers: {
-        Accept: '*/*',
-        'User-Agent': 'HTTP Wizard'
-      },
-    };
-    this.handleOnData();
-    this.handleInput = this.handleInput.bind(this);
-    this.handleTerminate = this.handleTerminate.bind(this);
+    // this.handleOnData();
+    this.startServer = this.startServer.bind(this);
+    this.terminateServer = this.terminateServer.bind(this);
   }
 
-  handleChange = (e) => {
-    const state = {};
-    state[e.target.name] = e.target.value;
-    this.setState(state);
-  }
-
-  handleInput = (filePath) => {
-    console.log(filePath)
+  startServer = (filePath) => {
     ipcRenderer.send('server', filePath);
   }
 
-  handleTerminate = () => {
+  terminateServer = () => {
     ipcRenderer.send('terminate', true);
     new Notification('Server terminated');
   }
 
-  handleOnData = () => {
-    ipcRenderer.on('child-data', (event, data) => {
-      console.log(data);
-    });
-  }
+  // handleOnData = () => {
+  //   ipcRenderer.on('child-data', (event, data) => {
+  //     console.log(data);
+  //   });
+  // }
 
   makeRequest = () => {
     request(this.state, (err, res, body) => {
@@ -63,52 +61,64 @@ class Request extends React.Component {
     });
   }
 
-  handleAdd = (header) => {
-    const headers = this.state.headers;
-    headers[header.name] = header.value;
-    this.setState({ headers: headers });
-  }
+  // handleAdd = (header) => {
+  //   const headers = this.state.headers;
+  //   headers[header.name] = header.value;
+  //   this.setState({ headers: headers });
+  // }
 
-  handleChangeHeader = (e) => {
-    const key = e.target.dataset.headerName;
-    const headers = this.state.headers;
-    headers[key] = e.target.value;
-    this.setState({ headers: headers });
-  }
+  // handleChangeHeader = (e) => {
+  //   const key = e.target.dataset.headerName;
+  //   const headers = this.state.headers;
+  //   headers[key] = e.target.value;
+  //   this.setState({ headers: headers });
+  // }
 
-  handleRemoveHeader = (e) => {
-    e.preventDefault();
-    const key = e.target.dataset.headerName;
-    const headers = this.state.headers;
-    delete headers[key];
-    this.setState({ headers: headers });
-  }
+  // handleRemoveHeader = (e) => {
+  //   e.preventDefault();
+  //   const key = e.target.dataset.headerName;
+  //   // const headers = this.state.headers;
+  //   delete headers[key];
+  //   this.setState({ headers: headers });
+  // }
 
   render() {
+    const {
+      setServerPath,
+      setMethod, 
+      setURL,
+      filePath,
+      URL, 
+      method, 
+      headers
+    } = this.props;
+
     return (
       <div className="request">
         <h1>Requests</h1>
         <div className="request-options">
           <FileInput 
-            handleInput={this.handleInput}
-            handleTerminate={this.handleTerminate}
+            setServerPath={setServerPath}
+            terminateServer={this.terminateServer}
+            startServer={this.startServer}
+            filePath={filePath}
             />
           <div className="form-row">
             <label>URL</label>
             <input
               name="url"
               type="url"
-              value={this.state.url}
-              onChange={this.handleChange} />
+              value={URL}
+              onChange={setURL} />
           </div>
           <div className="form-row">
             <label>Method</label>
             <input
               name="method"
               type="text"
-              value={this.state.method}
+              value={method}
               placeholder="GET, POST, PATCH, PUT, DELETE"
-              onChange={this.handleChange} />
+              onChange={setMethod} />
           </div>
           <div className="form-row">
             <table className="headers">
@@ -119,7 +129,7 @@ class Request extends React.Component {
                 </tr>
               </thead>
               <RequestHeaders
-                headers={this.state.headers}
+                headers={headers}
                 handleChangeHeader={this.handleChangeHeader}
                 handleRemoveHeader={this.handleRemove}
                 handleAdd={this.handleAdd} />
@@ -134,4 +144,4 @@ class Request extends React.Component {
   }
 }
 
-export default Request;
+export default connect(mapStateToProps, mapDispatchToProps)(Request);
