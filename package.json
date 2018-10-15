@@ -1,7 +1,7 @@
 {
-  "name": "http-wizard",
-  "version": "1.0.0",
-  "description": "A less minimal Electron application",
+  "name": "server-stopwatch",
+  "version": "0.0.1",
+  "description": "An API performance tool",
   "main": "main.js",
   "scripts": {
     "start": "npm-run-all --parallel build app",
@@ -10,26 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atom/electron-quick-start.git"
+    "url": "git+https://github.com/NodeTS/server-stopwatch.git"
   },
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial"
-  ],
   "babel": {
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
     ]
   },
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/atom/electron-quick-start/issues"
-  },
-  "homepage": "https://github.com/atom/electron-quick-start#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
