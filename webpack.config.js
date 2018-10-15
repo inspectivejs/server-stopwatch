@@ -3,32 +3,33 @@ module.exports = {
   watch: true,
   target: 'electron-renderer',
   resolve: {
-    extensions: ['*','.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
   },
   entry: [
-    './app/index.jsx'
+    './app/index.jsx',
   ],
   output: {
     path: __dirname + '/js',
-    filename: 'app.js'
+    filename: 'app.js',
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, 
+      {
+        test: /\.jsx?$/,
         use: {
           loader: 'babel-loader',
           options: {
             plugins: [
               "babel-plugin-transform-class-properties",
-              "transform-react-jsx"
+              "transform-react-jsx",
             ],
             presets: ["@babel/preset-env"]
-          }
-        } 
-      }
-    ]
+          },
+        },
+      },
+    ],
   },
   plugins: [
-    new webpack.ExternalsPlugin('commonjs', ['electron'])
-  ]
+    new webpack.ExternalsPlugin('commonjs', ['electron']),
+  ],
 };
