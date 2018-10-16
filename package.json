@@ -48,10 +48,11 @@
     "json-schema-faker": "^0.5.0-rc16",
     "react": "^16.5.2",
     "react-ace": "^6.2.0",
+    "react-billboardjs": "^1.4.3",
     "react-highlight": "^0.12.0",
-    "request": "^2.67.0",
-    "request-promise-native": "^1.0.5",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "request": "^2.67.0",
+    "request-promise-native": "^1.0.5"
   }
 }
