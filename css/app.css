@@ -49,9 +49,24 @@ body, html {
   text-shadow: 2px .75px .5px #ACBDBA;
 }
 
-h1{
+.request h1{
   font-family: Tahoma;
   font-weight: 100;
+  margin-left: 10px;
+  color: #D6F9DD;
+  text-shadow: 2px 1.75px .5px rgba(33,34,39, .9);
+}
+
+.tag_name {
+  position: absolute;
+  font-family: Tahoma;
+  font-weight: 100;
+  font-size: .90em;
+  bottom: 0;
+  left:0;
+  padding-left: 10px;
+  color:red;
+  text-shadow: .25px .25px .2px rgba(222, 223, 231, 0.9);
 }
 
 .server_path {
@@ -78,6 +93,44 @@ h1{
   left: 0;
 }
 
+.headers {
+  width: 70vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.add {
+  margin: 10vh 0vh 0vh 0vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.header-body {
+  overflow-y: scroll;
+  height: 10vh;
+  margin: auto;
+  box-shadow: 5px 2px 5px 4px #888888;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+.test {
+  overflow: hidden;
+}
+
+.btn {
+  position: absolute;
+  top:0;
+  right:0;
+}
 /* 
 h1, h2, input, .dg *, a, p, select, input, label {
   font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;

@@ -9,7 +9,7 @@ const initialState = {
   method: "GET",
   headers: {
     "Accept": "*/*",
-    "User-Agent": "Server-StopWatch",
+    "User-Agent": "server-stopwatch",
   },
   newHeaderName: '',
   newHeaderValue: '',
