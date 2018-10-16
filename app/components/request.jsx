@@ -66,31 +66,15 @@ class Request extends Component {
   //   headers[header.name] = header.value;
   //   this.setState({ headers: headers });
   // }
-
-  // handleChangeHeader = (e) => {
-  //   const key = e.target.dataset.headerName;
-  //   const headers = this.state.headers;
-  //   headers[key] = e.target.value;
-  //   this.setState({ headers: headers });
-  // }
-
-  // handleRemoveHeader = (e) => {
-  //   e.preventDefault();
-  //   const key = e.target.dataset.headerName;
-  //   // const headers = this.state.headers;
-  //   delete headers[key];
-  //   this.setState({ headers: headers });
-  // }
-
   render() {
+
     const {
       setServerPath,
       setMethod, 
       setURL,
       filePath,
       URL, 
-      method, 
-      headers
+      method
     } = this.props;
 
     return (
@@ -129,9 +113,6 @@ class Request extends Component {
                 </tr>
               </thead>
               <RequestHeaders
-                headers={headers}
-                handleChangeHeader={this.handleChangeHeader}
-                handleRemoveHeader={this.handleRemove}
                 handleAdd={this.handleAdd} />
             </table>
           </div>
