@@ -79,11 +79,6 @@ class Request extends React.Component {
       if(err){
         new Notification(err)
       } else {
-
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-
-        }
         const requests = json.map(data => fetch(this.state.filePath, {
           method: 'POST',
           headers: this.state.http.headers,

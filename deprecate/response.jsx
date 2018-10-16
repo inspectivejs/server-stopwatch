@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Events from './events';
+import Events from '../app/components/events';
 import Headers from './headers';
 import Highlight from 'react-highlight';
 

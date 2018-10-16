@@ -6,7 +6,7 @@ module.exports = {
     extensions: ['*','.js', '.jsx']
   },
   entry: [
-    './app/index.jsx'
+    './app/index.js'
   ],
   output: {
     path: __dirname + '/js',
