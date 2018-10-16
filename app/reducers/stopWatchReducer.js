@@ -2,11 +2,14 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   filePath: '',
-  URL: 'http://localhost:3000',
-  method: 'GET',
+  data: null,
+  requests: 0,
+  schema: '',
+  URL: "http://localhost:3000",
+  method: "GET",
   headers: {
-    Accept: '*/*',
-    'User Agent': 'HTTP Wizard'
+    "Accept": "*/*",
+    "User-Agent": "Server-StopWatch",
   },
   newHeaderName: '',
   newHeaderValue: '',
@@ -14,6 +17,11 @@ const initialState = {
 
 const stopWatchReducer = (state=initialState, action) => {
   switch(action.type){
+    case types.SET_DATA:
+      return {
+        ...state,
+        data: [...state.data, action.payload]
+      }
     case types.SET_SERVER_PATH:
       return {
         ...state,
@@ -29,6 +37,11 @@ const stopWatchReducer = (state=initialState, action) => {
         ...state,
         method: action.payload,
       };
+    case types.SET_REQUESTS:
+      return {
+        ...state,
+        requests: action.payload
+      }
     case types.UPDATE_HEADER:
       let {key, payload} = action;
       let newHeaders = {...state.headers}
@@ -37,7 +50,11 @@ const stopWatchReducer = (state=initialState, action) => {
         ...state,
         headers: {...newHeaders}
       };
-
+    case types.SET_SCHEMA:
+      return {
+        ...state,
+        schema: action.payload
+      };
     case types.REMOVE_HEADER:
       key = action.payload
       newHeaders = {...state.headers};

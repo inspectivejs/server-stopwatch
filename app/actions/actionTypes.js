@@ -6,3 +6,6 @@ export const UPDATE_HEADER = 'UPDATE_HEADER';
 export const SET_HEADER_NAME = 'SET_HEADER_NAME';
 export const SET_HEADER_VALUE = 'SET_HEADER_VALUE';
 export const ADD_HEADER = 'ADD_HEADER';
+export const SET_SCHEMA = 'SET_SCHEMA';
+export const SET_REQUESTS = 'SET_REQUESTS';
+export const SET_DATA = 'SET_DATA';

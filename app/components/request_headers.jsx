@@ -8,8 +8,14 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateHeader: (event) => dispatch(actions.updateHeader(event.target.value, event.target.dataset.headerName)),
-  removeHeader: (event) => dispatch(actions.removeHeader(event.target.dataset.headerName))
+  updateHeader: (event) => {
+    dispatch(
+      actions.updateHeader(event.target.value, event.target.dataset.headerName)
+  )},
+  removeHeader: (event) => {
+    dispatch(
+      actions.removeHeader(event.target.dataset.headerName)
+  )}
 });
 
 class RequestHeaders extends Component {
@@ -40,7 +46,7 @@ class RequestHeaders extends Component {
       return (
         <tbody className="header-body">
           {headerRows}
-          <AddHeader /*updateHeader={this.props.updateHeader}*/ />
+          <AddHeader />
         </tbody>
       );
     }

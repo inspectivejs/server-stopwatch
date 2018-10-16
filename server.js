@@ -17,16 +17,13 @@ stopwatch.listen(server, {
 });
 
 function validateUser(req, res, next) {
-  res.locals.name = req.body.name === 'Ryan' ? 'Hello Ryan' : 'You are not Ryan'
   next();
 }
 
 const _validateUser = performance.timerify(validateUser);
 
-
-app.post('/', (req, res) => {
-  console.log('check')
-  res.send('check');
+app.post('/', _validateUser, (req, res) => {
+  res.send({ name: req.body.name });
 })
 
 app.get('/no', (req, res) => {

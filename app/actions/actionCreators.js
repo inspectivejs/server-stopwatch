@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
 
-
 export const setServerPath = (path) => ({
   type: types.SET_SERVER_PATH,
   payload: path,
@@ -42,3 +41,19 @@ export const setHeaderValue = (value) => ({
   type: types.SET_HEADER_VALUE,
   payload: value
 });
+
+export const setSchema = (schemaString) => ({
+  type: types.SET_SCHEMA,
+  payload: schemaString
+})
+
+export const setRequests = (requests) => ({
+  type: types.SET_REQUESTS,
+  payload: requests
+})
+
+export const setData = (data) => ({
+  type: types.SET_DATA,
+  payload: data
+})
+

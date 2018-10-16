@@ -1,6 +1,6 @@
 const jsf = remote.require('json-schema-faker');
 
-function fakeData (schema, count, callback) {
+function dataFaker (schema, count, callback) {
   let data;
   try {
     data = JSON.parse(schema);
@@ -18,4 +18,4 @@ function fakeData (schema, count, callback) {
   })
 }
 
-export default fakeData; 
+export default dataFaker; 

@@ -4,9 +4,9 @@ import AceEditor from 'react-ace';
 const Editor = (props) => {
   return (
     <div>
-      <AceEditor 
+      <AceEditor
         value={props.schema}
-        onChange={props.handleSchema}
+        onChange={props.setSchema}
         editorProps={{$blockScrolling: true}}
       />
     </div>
