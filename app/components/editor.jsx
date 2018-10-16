@@ -3,7 +3,7 @@ import AceEditor from 'react-ace';
 
 const Editor = (props) => {
   return (
-    <div>
+    <div className="editor_wrapper">
       <AceEditor
         value={props.schema}
         onChange={props.setSchema}

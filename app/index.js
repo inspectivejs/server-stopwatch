@@ -3,16 +3,21 @@
 import React from 'react';
 import store from './store'
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+import Nav from './components/nav.jsx';
+import { Provider } from 'react-redux';
 import Request from './components/request';
+import { HashRouter } from 'react-router-dom'
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="container">
-          <Request /> 
-        </div>
+        <HashRouter>
+          <div className='parent_div'>
+            <Nav />
+            <Request />
+          </div>
+        </HashRouter>
       </Provider>
     );
   }

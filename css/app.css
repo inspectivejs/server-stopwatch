@@ -1,19 +1,84 @@
-@font-face {
-  font-family: 'Segoe UI';
-  font-weight: 300;
-  src: local('Segoe UI Semilight');
-}
 
 body, html {
   position: fixed;
-  background-color: #F7F7F7;
+  background-color: #ACBDBA;
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
+  -webkit-app-region: drag;
 }
 
+.request{
+  flex:5;
+  height: 100%;
+}
+
+.request-options{
+  
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.parent_div {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+.parent_div ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: #212227; */
+  background-color: rgba(33,34,39, .9);
+  height: 100vh;
+  box-sizing: content-box;
+  padding-right: 2vw;
+}
+
+.menu_icons  {
+  list-style: none;
+  margin: 5vh 0vh 10vh 0vh;
+  color: #79B791;
+  text-shadow: 2px .75px .5px #ACBDBA;
+}
+
+h1{
+  font-family: Tahoma;
+  font-weight: 100;
+}
+
+.server_path {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  cursor: pointer;
+  /* border: 1px solid red; */
+}
+
+#upload{
+  margin-right: 2vw;
+}
+
+#upload:hover {
+  color: white;
+  transition: .25s;
+}
+
+.editor_wrapper {
+  left: 0;
+}
+
+/* 
 h1, h2, input, .dg *, a, p, select, input, label {
   font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -33,9 +98,12 @@ h1 {
 }
 
 p { margin: 5px 0 }
+*/
 
 input { border: 1px solid #CCCCCC; border-radius: 3px }
 input:focus { border: 1px solid #3E8FD6 !important; color: #3E8FD6; outline: none }
+
+/*
 
 .content-container { padding: 0; width: 79%; height: 100%; table-layout: fixed; overflow: hidden; box-sizing: border-box; position: absolute; margin-bottom: -100px; right: 0; left: 30%; background-color: #fff }
 .content { padding: 0; width: 100%; height: 100%; }
@@ -89,9 +157,32 @@ ul.nav li.active a { color: #4190DD }
 .request .headers .value { padding-left: 10px }
 .request .submit { border-top: 1px solid #DBDBDB; margin: 15px 0; padding-top: 5px }
 
+
+*/
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
+  width:40%;
+  margin:auto;
+
+}
+
+.mui-btn {
+  /* margin: auto; */
+  width: 15vw;
+  flex: 3;
+}
+
+.s_btn {
+  background-color: #79B791;
+}
+
 .btn { color: #000; background-color: #fff; padding: 2px 6px; border: 1px solid #CDCDCD; border-radius: 3px; text-decoration: none; float: right; margin-top: 4px; }
 .btn:active { background-color: #f0f0f0 }
 
 .round-btn { text-decoration: none; color: #3E8FD6; }
 
-.results { background-color: #F7F7F7; height: 100%; overflow: scroll; } 
+.results { background-color: #F7F7F7; height: 100%; overflow: scroll; }  
