@@ -1,45 +1,9 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
+import Editor from './Editor';
 
-class AddHeader extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: null, value: null };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAdd = this.handleAdd.bind(this)
-  }
-
-  handleChange(e) {
-    switch (e.target.name) {
-      case 'name':
-        this.setState({ name: e.target.value });
-      break;
-
-      case 'value':
-        this.setState({ value: e.target.value });
-      break;
-    }
-  }
-
-  handleAdd(e) {
-    e.preventDefault();
-    this.props.handleAdd(this.state);
-    this.setState({ name: null, value: null });
-  }
-
-  render() {
-    return (
-      <tr className="add">
-        <td className="name"><input name="name" type="text" value={this.state.name} placeholder="Name" onChange={this.handleChange} /> </td>
-        <td className="value"><input name="value" type="text" value={this.state.value} placeholder="Value" onChange={this.handleChange} /> </td>
-        <td className="value"><a href="#" className="round-btn" onClick={this.handleAdd}>+</a></td>
-      </tr>
-    );
-  }
-}
-
-class RequestHeaders extends React.Component {
+class RequestHeaders extends Component {
   render() {
     const headers = this.props.headers || {};
     const headerRows = Object.keys(headers).map((key, i) => {
@@ -49,12 +13,13 @@ class RequestHeaders extends React.Component {
           <td className="value">
             <input 
               name="method" 
-              type="text" value={headers[key]} 
+              type="text"
               data-header-name={key} 
+              value={headers[key]}  
               onChange={this.props.handleChangeHeader} 
               placeholder="Header value" /> 
             <a href="#" 
-              className="round-btn" data-header-name={key} 
+              className="round-btn" data-header-name={key}
               onClick={this.props.handleRemove}>&times;</a>
           </td>
         </tr>
@@ -64,7 +29,17 @@ class RequestHeaders extends React.Component {
     return (
       <tbody className="header-body">
         {headerRows}
-        <AddHeader handleAdd={this.props.handleAdd} />
+        <td className="requests">
+        </td>
+        <input
+          name="requests"
+          type="text"
+          value={this.props.requests} 
+          onChange={this.props.handleChangeRequests}
+        />
+        <Editor 
+          handleSchema={this.props.handleSchema} 
+          schema={this.props.schema} />
       </tbody>
     );
   }

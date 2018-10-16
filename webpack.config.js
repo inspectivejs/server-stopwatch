@@ -20,6 +20,7 @@ module.exports = {
           options: {
             plugins: [
               "babel-plugin-transform-class-properties",
+              "@babel/plugin-transform-async-to-generator",
               "transform-react-jsx"
             ],
             presets: ["@babel/preset-env"]

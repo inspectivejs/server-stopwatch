@@ -57,7 +57,7 @@ ul.nav li a:hover { background-color: #EFEFEF }
 ul.nav li.active a { color: #4190DD }
 
 .container { display: table; width: 100%; height: 100%; box-sizing: border-box }
-.request { width: 30%; float: left; border-right: 1px solid #999999; display: table-cell; box-sizing: border-box; height: 100%; overflow: auto; }
+.request { width: 100%; float: left; border-right: 1px solid #999999; display: table-cell; box-sizing: border-box; height: 100%; overflow: auto; }
 .request h1 { background-color: #F6F6F6 }
 
 .response { width: 70%; float: left; padding: 0; box-sizing: border-box; height: 100%; background-color: #fff; }
@@ -79,7 +79,8 @@ ul.nav li.active a { color: #4190DD }
   -webkit-hyphens: auto;
   hyphens: auto;
 }
-.request .header-body td { border-bottom: 1px solid #F8F8F8 }
+.request .header-body { float: left; }
+.request .header-body td { border-bottom: 1px solid #F8F8F8; }
 
 .request .headers { margin-top: 10px; }
 .request .headers input { width: 70%; }
