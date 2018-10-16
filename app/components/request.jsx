@@ -33,7 +33,6 @@ class Request extends Component {
   }
 
   startServer = () => {
-    console.log('startServer', this.props.filePath)
     if (!this.props.filePath) {
       return;
     }
@@ -88,9 +87,9 @@ class Request extends Component {
       filePath,
       URL, 
       method,
-      requests,
       schema
     } = this.props;
+    const methodHasBody = method === 'POST' || method === 'PUT' || method === 'DELETE';
  
     return (
       <div className="request">
@@ -110,7 +109,7 @@ class Request extends Component {
               onChange={setURL} />
           </div>
           <div className="form-row">
-            <label>Method</label>
+            <label>METHOD</label>
             <select value={method} onChange={setMethod}>
               <option value="GET">GET</option>
               <option value="POST">POST</option>
@@ -129,7 +128,7 @@ class Request extends Component {
               <RequestHeaders
                 handleAdd={this.handleAdd} />
               <tbody>
-                <tr>{method === 'POST' ? <Editor setSchema={setSchema} schema={schema}/> : null}</tr>
+                <tr>{methodHasBody ? <Editor setSchema={setSchema} schema={schema}/> : null}</tr>
               </tbody>
             </table>
           </div>

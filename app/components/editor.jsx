@@ -7,7 +7,8 @@ import 'brace/theme/github';
 
 const Editor = (props) => {
   return (
-    <td><AceEditor
+    <td>
+      <AceEditor
         mode="json"
         theme="github"
         value={props.schema}
