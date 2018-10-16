@@ -17,6 +17,8 @@ ipcRenderer.on('label', (event, arg) => {
   // alert('we got data to multiXY');
   console.log('inside multiXY.js', arg);
   data = arg;
+
+
   // loop through the data
   for (let i = 0; i < data.length; i += 1) {
     if (data[i].mark === 'validateUser') {
@@ -24,8 +26,8 @@ ipcRenderer.on('label', (event, arg) => {
       time1.push(data[i].actualTime);
     }
     if (data[i].mark === '/') {
-      validateArray.push(data[i].duration);
-      time1.push(data[i].actualTime);
+      rootArray.push(data[i].duration);
+      time2.push(data[i].actualTime);
     }
   }
   chart.load({
@@ -36,6 +38,10 @@ ipcRenderer.on('label', (event, arg) => {
       // ...validateArray, ...rootArray,
     ],
   });
+  // validateArray = ['validateUser'];
+  // time1 = ['time1'];
+  // rootArray = ['/'];
+  // time1 = ['time2'];
 });
 
 

@@ -34,7 +34,7 @@ class Request extends Component {
 
   startServer = () => {
     if (!this.props.filePath) {
-      new Notification(`No file selected`)
+      return;
     }
     else {
       ipcRenderer.send('server', this.props.filePath);
@@ -43,7 +43,6 @@ class Request extends Component {
 
   terminateServer = () => {
     ipcRenderer.send('terminate', true);
-    new Notification('Server terminated');
   }
 
   handleOnData = () => {
@@ -55,11 +54,11 @@ class Request extends Component {
 
   makeRequest = () => {
     const { method, headers, schema, requests, URL } = this.props;
+    if (!method || !headers || !schema || !requests || !URL) {
+      new Notification(new Error('All fields must be filled out'))
+    }
     let promises = [];
     if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-      if (!method || !headers || !schema || !requests || !URL) {
-        new Notification('All fields must be filled out')
-      }
       dataFaker(schema, requests, (err, json) => {
         if (err || !URL) {
           new Notification(err)
@@ -89,9 +88,9 @@ class Request extends Component {
       filePath,
       URL, 
       method,
-      requests,
       schema
     } = this.props;
+    const methodHasBody = method === 'POST' || method === 'PUT' || method === 'DELETE';
  
     return (
       <div className="request">
@@ -111,7 +110,7 @@ class Request extends Component {
               onChange={setURL} />
           </div>
           <div className="form-row">
-            <label>Method</label>
+            <label>METHOD</label>
             <select value={method} onChange={setMethod}>
               <option value="GET">GET</option>
               <option value="POST">POST</option>
@@ -129,22 +128,16 @@ class Request extends Component {
               </thead>
               <RequestHeaders
                 handleAdd={this.handleAdd} />
-              <label>Requests: </label>
-              <input
-                name="requests"
-                type="text"
-                value={requests || ''} 
-                onChange={event => setRequests(event)} />
-              {method === 'POST' 
-                ? <Editor 
-                    setSchema={setSchema} 
-                    schema={schema} />
-                : ''
-                }
+              <tbody>
+                <tr>{methodHasBody ? <Editor setSchema={setSchema} schema={schema}/> : null}</tr>
+              </tbody>
             </table>
           </div>
           <div className="form-row">
-            <a className="btn" onClick={this.makeRequest}>Make request</a>
+            <a 
+              className="btn" 
+              onClick={this.makeRequest} 
+              disabled={filePath ? false : true}>Make request</a>
           </div>
         </div>
       </div>
