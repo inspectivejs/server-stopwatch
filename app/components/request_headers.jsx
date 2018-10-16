@@ -27,30 +27,30 @@ class RequestHeaders extends Component {
   render(){
     const headerRows = Object.keys(this.props.headers).map((key, indx) => {
       return (
-          <tr key={indx}>
-            <td className="name"><label>{key}</label></td>
-            <td className="value">
-              <input 
-                name="method" 
-                type="text" value={this.props.headers[key]} 
-                data-header-name={key} 
-                onChange={this.props.updateHeader} 
-                placeholder="Header value" /> 
-              <a href="#" 
-                className="round-btn" data-header-name={key} 
-                onClick={this.props.removeHeader}>&times;</a>
-            </td>
-          </tr>
-        );
-      });
-      
-      return (
-        <tbody className="header-body">
-          {headerRows}
-          <AddHeader />
-          <AddRequests />
-        </tbody>
+        <tr key={indx}>
+          <td className="name"><label>{key}</label></td>
+          <td className="value">
+            <input 
+              name="method" 
+              type="text" value={this.props.headers[key]} 
+              data-header-name={key} 
+              onChange={this.props.updateHeader} 
+              placeholder="Header value" /> 
+            <a href="#" 
+              className="round-btn" data-header-name={key} 
+              onClick={this.props.removeHeader}>&times;</a>
+          </td>
+        </tr>
       );
+    });
+      
+    return (
+      <tbody className="header-body">
+        {headerRows}
+        <AddHeader />
+        <AddRequests />
+      </tbody>
+    );
     }
   }
 

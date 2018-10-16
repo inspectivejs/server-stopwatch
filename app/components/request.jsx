@@ -129,14 +129,7 @@ class Request extends Component {
               <RequestHeaders
                 handleAdd={this.handleAdd} />
               <tbody>
-                <tr>
-                  {method === 'POST' 
-                    ? <Editor 
-                        setSchema={setSchema} 
-                        schema={schema}/>
-                    : ''
-                  }
-                </tr>
+                <tr>{method === 'POST' ? <Editor setSchema={setSchema} schema={schema}/> : null}</tr>
               </tbody>
             </table>
           </div>
