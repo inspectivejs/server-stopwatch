@@ -47,6 +47,7 @@ class Request extends Component {
 
   handleOnData = () => {
     ipcRenderer.on('child-data', (event, data) => {
+      // this is what logging the data
       console.log('child-data', data);
     });
   }
