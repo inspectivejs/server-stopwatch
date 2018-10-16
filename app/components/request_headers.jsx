@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actionCreators';
-import AddHeader from './add_headers'
+import AddHeader from './add_headers';
+import AddRequests from './add_requests';
 
 const mapStateToProps = store => ({
   headers: store.server.headers
@@ -47,6 +48,7 @@ class RequestHeaders extends Component {
         <tbody className="header-body">
           {headerRows}
           <AddHeader />
+          <AddRequests />
         </tbody>
       );
     }

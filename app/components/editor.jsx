@@ -3,13 +3,11 @@ import AceEditor from 'react-ace';
 
 const Editor = (props) => {
   return (
-    <div>
-      <AceEditor
+    <td><AceEditor
         value={props.schema}
         onChange={props.setSchema}
-        editorProps={{$blockScrolling: true}}
-      />
-    </div>
+        editorProps={{$blockScrolling: true}}/>
+    </td>
   );
 };
 
