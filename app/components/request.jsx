@@ -61,11 +61,12 @@ class Request extends Component {
     });
   }
 
-  // handleAdd = (header) => {
-  //   const headers = this.state.headers;
-  //   headers[header.name] = header.value;
-  //   this.setState({ headers: headers });
+  // makeRequest = (method, path, body) => {
+  //   if(method === 'POST' || method === 'PUT'){
+  //     fetch(this.props.)
+  //   }
   // }
+
   render() {
 
     const {
